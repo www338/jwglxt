@@ -5,7 +5,7 @@ import json
 kcxx={}
 session = requests.session()
 sessionid=""
-
+xh=""
 header={
     'Host': 'jwglxt.qust.edu.cn',
     'User - Agent': 'Mozilla / 5.0',
@@ -25,10 +25,13 @@ header={
 
 def getsessionid():
     global sessionid
-    sessionid="856E60C2961F381F2E4D27AAF05A005F"
+    global xh
+    sessionid=""
+    xh=""
 
 def getall():
     global session
+    global sessionid
     for i in range (2,10):
         header={
             'Host': 'jwglxt.qust.edu.cn',
@@ -42,11 +45,12 @@ def getall():
             'Origin': 'http://jwglxt.qust.edu.cn',
             'Connection': 'keep-alive',
             'Referer': 'http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxZzxkYzbIndex.html?gnmkdm=N253512&layout=default&su=1708010117',
-            'Cookie': 'JSESSIONID=856E60C2961F381F2E4D27AAF05A005F',
+            'Cookie': 'JSESSIONID='+sessionid,
             'Pragma': 'no-cache',
             'Cache-Control': 'no-cache'
         }
-        url="http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxZzxkYzbPartDisplay.html?gnmkdm=N253512&su=1708010117"
+        global xh
+        url="http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxZzxkYzbPartDisplay.html?gnmkdm=N253512&su="+xh
         datas={
             'yl_list[0]':'0',
             'yl_list[1]':'1',
@@ -83,6 +87,8 @@ def getall():
         #print(res.text)
 
 def getB200():
+    global sessionid
+    global xh
     header = {
         'Host': 'jwglxt.qust.edu.cn',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0',
@@ -95,11 +101,11 @@ def getB200():
         'Origin': 'http://jwglxt.qust.edu.cn',
         'Connection': 'keep-alive',
         'Referer': 'http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxZzxkYzbIndex.html?gnmkdm=N253512&layout=default&su=1708010117',
-        'Cookie': 'JSESSIONID=856E60C2961F381F2E4D27AAF05A005F',
+        'Cookie': 'JSESSIONID='+sessionid,
         'Pragma': 'no-cache',
         'Cache-Control': 'no-cache'
     }
-    url="http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxZzxkYzbPartDisplay.html?gnmkdm=N253512&su=1708010117"
+    url="http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxZzxkYzbPartDisplay.html?gnmkdm=N253512&su="+xh
     datas = {
         'yl_list[0]': '1',
         'filter_list[0]': 'B200',
@@ -152,6 +158,8 @@ def getB200():
 
 
 def getxkkzid():
+    global sessionid
+    global xh
     header = {
         'Host': 'jwglxt.qust.edu.cn',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0',
@@ -168,7 +176,7 @@ def getxkkzid():
         'Pragma': 'no-cache',
         'Cache-Control': 'no-cache'
     }
-    url="http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxZzxkYzbIndex.html?gnmkdm=N253512&layout=default&su=1708010117"
+    url="http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxZzxkYzbIndex.html?gnmkdm=N253512&layout=default&su="+xh
     # res = requests.get(url=url,headers=header)
     # res=res.text.split("firstXkkzId")[2].split("value=\"")[1].split("\"")[0]
     # global  kcxx
@@ -189,13 +197,13 @@ def getkc():
     'Origin': 'http://jwglxt.qust.edu.cn',
     'Connection': 'keep-alive',
     'Referer': 'http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxZzxkYzbIndex.html?gnmkdm=N253512&layout=default&su=1708010117',
-    'Cookie': 'JSESSIONID=856E60C2961F381F2E4D27AAF05A005F',
+    'Cookie': 'JSESSIONID='+sessionid,
     'Pragma': 'no-cache',
     'Cache-Control': 'no-cache'
     }
     global kcxx
     print(kcxx['kch_id'])
-    url="http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxJxbWithKchZzxkYzb.html?gnmkdm=N253512&su=1708010117"
+    url="http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxJxbWithKchZzxkYzb.html?gnmkdm=N253512&su="+xh
     datas={
          'rwlx': '2',
     'xkly': '0',
@@ -242,6 +250,8 @@ def getkc():
     kcxx['jxb_ids']=res['do_jxb_id']
 
 def select():
+    global sessionid
+    global xh
     global kcxx
     print(kcxx)
     header = {
@@ -256,11 +266,11 @@ def select():
         'Origin': 'http://jwglxt.qust.edu.cn',
         'Connection': 'keep-alive',
         'Referer': 'http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_cxZzxkYzbIndex.html?gnmkdm=N253512&layout=default&su=1708010117',
-        'Cookie': 'JSESSIONID=856E60C2961F381F2E4D27AAF05A005F',
+        'Cookie': 'JSESSIONID='+sessionid,
         'Pragma': 'no-cache',
         'Cache-Control': 'no-cache'
     }
-    url = "http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_xkBcZyZzxkYzb.html?gnmkdm=N253512&su=1708010117"
+    url = "http://jwglxt.qust.edu.cn/jwglxt/xsxk/zzxkyzb_xkBcZyZzxkYzb.html?gnmkdm=N253512&su="+xh
     datas = {
         'jxb_ids':kcxx['jxb_ids'],
         #'jxb_ids':'50fe5f32b31483e78eaefdee33fc6fd3818efc5f3dfc4d88a5f9aab9aeef55a06d7357485e8dd52f341dbe6cb9bfff386c4bca36f9da3688b475f1b15ea511016684cd1dc0e97a800e24a9915f25b4f407a7f696a0a24e9d3bb3bf1dfa4816400ea5596b8ff69f1ff95f7de321c11241081c7dc6a86dc1f479c0ad229b6bf93d',
