@@ -26,8 +26,8 @@ header={
 def getsessionid():
     global sessionid
     global xh
-    sessionid=""
-    xh=""
+    sessionid="8388E7E89B5116D6CB2C8CCDB00B1C43"
+    xh="1708080121"
 
 def getall():
     global session
@@ -300,8 +300,13 @@ getsessionid()
 #getall()
 i=1
 while(1):
-    getB200()
-    i+=1
-    print(i)
-    time.sleep(0.25)
+    try:
+        getB200()
+        i+=1
+        print(i)
+        time.sleep(0.15)
+    except Exception:
+        print(Exception.__text_signature__)
+        pass
+    continue
 
